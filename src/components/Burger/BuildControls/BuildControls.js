@@ -22,8 +22,15 @@ const buildControls = (props) => {
                 />
             )
             )}
+            <button 
+                className={classes.OrderButton}
+                disabled={!props.purchasable}
+                onClick={props.ordered}>ORDER NOW</button> 
         </div>
     );
 };
 
 export default buildControls;
+
+// disabled={!props.purchaseable}>ORDER NOW</button>. using ! bc disabled = true but at the first time , 
+//we pass disabled = false(as the state of purchasable at the first time) so that button is not disabled when no ingredients are passed
