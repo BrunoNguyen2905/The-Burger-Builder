@@ -4,8 +4,8 @@ import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component{
-    shouldComponentUpdate = (nextProps, nextState) => {
-        return nextProps.show !== this.props.show;
+    shouldComponentUpdate = (nextProps, nextState) => { //component only update when props.show (show state changes in BurgerBuilder.js)changes
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.childrens; //in this case, props.children change. we pass new child, new Spinner instead of OrderSummary
     }
 
     
