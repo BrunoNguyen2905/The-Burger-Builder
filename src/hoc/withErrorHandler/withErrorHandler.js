@@ -10,13 +10,19 @@ const withErrorHandler = (WrappedComponent, axios) => {
             error: null
         }
         componentWillMount (){ //componentDidMount is called after all child components have been rendered // xemlaiditmount and willmount
-            axios.interceptors.request.use(req => {
+            this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null}); // when send request, dont have error setup anymore
                 return req;
             });
-            axios.interceptors.response.use(res => res, error =>{
+            this.resInterceptor = axios.interceptors.response.use(res => res, error =>{
                 this.setState({error : error})
             });
+        }
+
+        componentWillUnmount(){
+            // console.log('Will Unmount', this.reqInterceptor, this.resInterceptor);// clean up interceptors when we dont need burger builder anymore
+              axios.interceptors.request.eject(this.reqInterceptor);
+              axios.interceptors.response.eject(this.resInterceptor);
         }
 
         errorConfirmedHandler = () =>{

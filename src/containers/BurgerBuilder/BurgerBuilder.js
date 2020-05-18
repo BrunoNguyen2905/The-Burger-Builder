@@ -32,7 +32,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
-        axios.get('https://react-my-burger-bf037.firebaseio.com/ingredients')//fetch data from server
+        axios.get('https://react-my-burger-bf037.firebaseio.com/ingredients.json')//fetch data from server
             .then(response => {
                 this.setState({ingredients: response.data});
             })
