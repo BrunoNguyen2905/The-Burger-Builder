@@ -1,9 +1,11 @@
 //burger we are really rendering to the screen
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/Burgeringredient';
 
 const Burger = (props) => {
+    // console.log(props);
     let transformedIngredients = Object.keys( props.ingredients ) //[...Array(3)] can create an array with 3 empty/undefined spaces
         .map( igKey => { //transform this string values into an array which as many elements as we have. if we have 2 cheese ingre , i want to transform to an array which simply contain 2 elements(should have a length of 2)  //create an array with Key Ingre and the number of array depends on values of that key in object
             return [...Array( props.ingredients[igKey] )].map((_, i) => { //map through elements
@@ -28,4 +30,4 @@ const Burger = (props) => {
     );
 };
 
-export default Burger;
+export default withRouter(Burger);
