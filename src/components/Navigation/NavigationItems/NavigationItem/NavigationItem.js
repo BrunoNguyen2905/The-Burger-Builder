@@ -6,7 +6,8 @@ const NavigationItem = (props) => {
     return (
         <li className={classes.NavigationItem}>
             <NavLink
-                href={props.link} 
+                to={props.link} 
+                exact={props.exact}//only get used with the only link we choose
                 // className={props.active ? classes.active: null} because navLink automatically defined active class
                 activeClassName={classes.active}>
                 {props.children}</NavLink>
